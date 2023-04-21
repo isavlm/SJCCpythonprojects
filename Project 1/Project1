@@ -1,0 +1,27 @@
+#—————————————————————————————————————
+#Student Name: Isadora Vasconcelos De Lima
+#Course: CIT 134A
+#Term/Year: Spring 2023
+#Date: 2/18/2023
+#Project Number: 1
+#—————————————————————————————————————
+
+#For this program, first I will present the program using the function #print. 
+
+Print ( “ Welcome to Employe Management Hub ”)
+
+#Now we will request #inputs from the user, such as their full name, company, address and the year they were hired. 
+
+first_name = input (“Enter your first name: “
+last_name = input (Enter your last name:”
+Print (f”Hello, {first_name}* {last_name%} ! Please respond the following questions:”)
+
+company_name = input(“Enter your company’s name)
+
+print (“You entered {company_name)
+
+company_address = input (“Enter your company’s address”)
+print ( “You entered {company_address}”)
+
+hire_year = input (“Enter the year you were hired:”) 
+Print (“You entered {hire_year}”)

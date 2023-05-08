@@ -1,0 +1,105 @@
+# ---------------------------------------------#
+# Student Name: Isadora Vasconcelos de Lima    #
+# Course:                                      #
+# Term/Year: Spring 2023                       #
+# Date: 5/7/2023                               #
+# Project Number: 4                            #
+# ---------------------------------------------#
+# some of the functions in this program contains HarryPotter references.
+# First MENU
+# Then all the methods.
+
+# How to define the menu. The code shows that we have eight commands the user can use:
+# view, highest, lowest, edit, average, range, total, exit.
+
+def revelio_menu():
+    print("Welcome to Monthly Sales Program")
+    print()
+    print("View Command Menu")
+    print()
+    print("view - View a sales amount for a specified month")
+    print()
+    print("highest - View the highest sales of the year")
+    print()
+    print("lowest - View the lowest sales of the year")
+    print()
+    print("edit - Edit a sales amount for a specified month")
+    print()
+    print("average - View the sales average for the whole year")
+    print()
+    print("range - View the sales average for a specified sales amount range")
+    print()
+    print("total - View the sales total for the whole year")
+    print()
+    print("exit - Exit the program")
+    print()
+
+
+# I am adding the empty print to add space to the program.
+
+# Making the file into a dictionary.
+# for this one I need to define read sales, turn the file into a dict,
+# show that at this time I want to READ(r) the info
+
+def read_sales():
+    sales_data = dict()
+    with open("monthly_sales.txt", "r") as sales_file:
+        for line in sales_file:
+            data = line.strip().split()
+            sales_data[data[0]] = float(data[1])
+    return sales_data
+
+
+# Writing into the file - don't forget to add the "w" so we can write. Using the \t as a tab and \n to add a new line.
+
+def write_sales(sales_info):
+    with open("monthly_sales.txt", "w") as file:
+        for month, amount in sales_info.items():
+            file.write(month + "\t" + str(amount) + "\n")
+
+
+# Editing the information.
+
+def edit_month(sales):
+    month = input("Three-letter Month: ").title()
+    if month in sales:
+        amount = float(input("Sales Amount: "))
+        sales[month] = amount
+        write_sales(sales)
+        print("Sales amount for {:s} is {:,.2f}.".format(month, amount))
+        print()
+    else:
+        print("Invalid three-letter month.")
+        print()
+
+
+# Viewing the sales
+
+def view_sales(sales):
+    month = input("Three-letter month: ").title()
+    if month in sales:
+        print("Sales amount for {:s} is {:,.2f}.".format(month, sales[month]))
+        print()
+    else:
+        print("Invalid three-letter month.")
+        print()
+
+
+# Getting the sales total
+
+def total_sales(sales):
+    total = float(sum(sales.values()))
+    monthly = float(round(total/12, 2))
+    print("Yearly total:   {:,.2f}".format(total))
+    print("Monthly average:  {:,.2f}".format(monthly))
+    print()
+
+
+# Do not forget to add the main() check code on page 341 to write it
+
+def main():
+    revelio_menu()
+    sales = read_sales()
+    while True:
+        command = input("Command: ").lower()
+        if command == "view":
